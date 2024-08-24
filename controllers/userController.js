@@ -11,7 +11,7 @@ export const createUser = async (req, res) => {
 };
 export const getAllUsers = async (req, res) => {
     try {
-      const users = await User.find().select("-password +iot"); // Include iot, exclude password
+      const users = await User.find().select("-password +iot");
       res.status(200).json(users);
     } catch (error) {
       res.status(500).json({ message: "Error retrieving users", error });
@@ -31,3 +31,31 @@ export const getUserByUsername = async (req, res) => {
       res.status(500).json({ message: "Error retrieving user", error });
     }
   };
+  export const registerIot = async (req, res) => {
+    try {
+      const { userId, iotData } = req.body;
+  
+      
+      const user = await User.findById(userId);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+
+      if (!Array.isArray(user.iotDevices)) {
+        user.iotDevices = []; 
+      }
+  
+      user.iotDevices.push(iotData);
+      await user.save();
+  
+      res
+        .status(201)
+        .json({ message: "IoT device registered successfully", user });
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Error registering IoT device", error: error.message });
+    }
+  };
+  
