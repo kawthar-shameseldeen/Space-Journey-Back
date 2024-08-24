@@ -6,7 +6,7 @@ import {
     displayPlanet,
     updatePlanet,
     deletePlanet,
-  } from "../controllers/palanetController.js";
+  } from "../controllers/planetController.js";
   
 const router = new Router();
 router.post("/planets", createPlanet);
