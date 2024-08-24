@@ -5,3 +5,4 @@ import {
     createUser,
     registerIot,
   } from "../controllers/userControlller.js";
+  const router = new Router();
