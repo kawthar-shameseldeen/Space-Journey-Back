@@ -10,3 +10,5 @@ router.get("/all", getAllUsers);
 router.get("/:username", getUserByUsername);
 router.post("/create", createUser);
 router.post("/iot", registerIot);
+
+export default router;
