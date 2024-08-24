@@ -29,3 +29,17 @@ export const createPlanet = async (req, res) => {
         .json({ message: "Error retrieving planet", error: error.message });
     }
   };
+  
+export const displayPlanet = async (req, res) => {
+    try {
+      const planetId = req.body.planetId;
+      const planet = await Planet.findById(planetId);
+      if (!planet) {
+        return res.status(404).json({ message: "Planet not found" });
+      }
+  
+      res.status(200).json(planet);
+    } catch (error) {
+      res.status(500).json({ message: "Error displaying planet", error });
+    }
+  };
