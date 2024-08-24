@@ -2,11 +2,7 @@ import mongoose from "mongoose";
 
 export const databaseConnection = async()=>{
     try {
-        await mongoose.connect(process.env.DATABASE_URL, {
-          dbName: "Space", 
-          useNewUrlParser: true,
-          useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.URI);
     
         console.log("Connected to database");
       
