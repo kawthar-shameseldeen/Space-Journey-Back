@@ -32,4 +32,9 @@ const userSchema = new Schema({
     default: [],
     select: false,
   },
+
+  timeStamp: {
+    type: Date,
+    default: Date.now,
+  },
 });
