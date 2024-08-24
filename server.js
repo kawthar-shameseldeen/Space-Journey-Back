@@ -16,3 +16,4 @@ app.use("/api", planetRoutes);
 
 
 const server = http.createServer(app);
+const wss = new WebSocketServer({ server });
