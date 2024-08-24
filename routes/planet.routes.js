@@ -15,4 +15,4 @@ router.get('/planets/:name', getPlanetByName);
 router.post("/planets/display", displayPlanet);
 router.put("/planets/:id", updatePlanet);
 router.delete("/planets/:id", deletePlanet);
-
+export default router;
