@@ -9,3 +9,7 @@ import {
   } from "../controllers/palanetController.js";
   
 const router = new Router();
+router.post("/planets", createPlanet);
+router.get("/planets", getAllPlanets);
+router.get('/planets/:name', getPlanetByName);
+
