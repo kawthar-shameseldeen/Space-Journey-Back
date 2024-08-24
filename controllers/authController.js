@@ -57,3 +57,16 @@ export const updatePlanet = async (req, res) => {
       res.status(500).json({ message: "Error updating planet", error });
     }
   };
+  
+export const deletePlanet = async (req, res) => {
+    try {
+      const planet = await Planet.findByIdAndDelete(req.params.id);
+      if (!planet) {
+        return res.status(404).json({ message: "Planet not found" });
+      }
+      res.status(200).json({ message: "Planet deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting planet", error });
+    }
+  };
+  
