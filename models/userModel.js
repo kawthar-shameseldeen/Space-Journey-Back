@@ -65,3 +65,6 @@ userSchema.methods.generateAuthToken = function () {
 userSchema.methods.matchPassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
   };
+  export const User = mongoose.model("User", userSchema);
+
+
