@@ -54,3 +54,9 @@ userSchema.pre('save', async function (next) {
     }
   });
   
+  
+userSchema.methods.generateAuthToken = function () {
+    return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
+      expiresIn: '30d', 
+    });
+  };
