@@ -16,3 +16,16 @@ export const createPlanet = async (req, res) => {
       res.status(500).json({ message: "Error retrieving planets", error });
     }
   };
+  export const getPlanetByName = async (req, res) => {
+    try {
+      const planet = await Planet.findOne({ name: req.params.name });
+      if (!planet) {
+        return res.status(404).json({ message: "Planet not found" });
+      }
+      res.status(200).json(planet);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ message: "Error retrieving planet", error: error.message });
+    }
+  };
