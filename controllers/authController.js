@@ -43,3 +43,17 @@ export const displayPlanet = async (req, res) => {
       res.status(500).json({ message: "Error displaying planet", error });
     }
   };
+  
+export const updatePlanet = async (req, res) => {
+    try {
+      const planet = await Planet.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
+      if (!planet) {
+        return res.status(404).json({ message: "Planet not found" });
+      }
+      res.status(200).json(planet);
+    } catch (error) {
+      res.status(500).json({ message: "Error updating planet", error });
+    }
+  };
