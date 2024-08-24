@@ -60,3 +60,8 @@ userSchema.methods.generateAuthToken = function () {
       expiresIn: '30d', 
     });
   };
+
+  
+userSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+  };
