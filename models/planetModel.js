@@ -1,8 +1,13 @@
-import mongoose,{Schema,Types} from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
-export const planetSchema=new Schema({
-    name:{
-        type:String,
-        required: true
-    },
+export const planetSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+
+  description: {
+    type: String,
+    required: true,
+  },
 });
