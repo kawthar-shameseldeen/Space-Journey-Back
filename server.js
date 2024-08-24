@@ -17,3 +17,17 @@ app.use("/api", planetRoutes);
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
+wss.on("connection", (ws, req) => {
+    console.log("New WebSocket connection established");
+  
+    ws.on("message", (message) => {
+      console.log("Received message:", message);
+  
+      ws.send(`Server received: ${message}`);
+    });
+  
+    ws.on("close", () => {
+      console.log("WebSocket connection closed");
+    });
+  });
+  
