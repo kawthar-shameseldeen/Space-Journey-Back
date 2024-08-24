@@ -70,3 +70,12 @@ export const deletePlanet = async (req, res) => {
     }
   };
   
+  
+export default {
+    createPlanet,
+    getAllPlanets,
+    getPlanetByName,
+    displayPlanet,
+    updatePlanet,
+    deletePlanet,
+  };
