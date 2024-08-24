@@ -26,4 +26,10 @@ const userSchema = new Schema({
     enum: ["admin", "user"],
     default: "user",
   },
+
+  iotDevices: {
+    type: [iotSchema],
+    default: [],
+    select: false,
+  },
 });
