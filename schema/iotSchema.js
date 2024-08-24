@@ -7,4 +7,8 @@ export const iotSchema = new Schema({
         enum: ["on", "off"], 
         required: true, 
       },
+      timestamp: {
+        type: Date,
+        default: Date.now,
+      },
 });
