@@ -8,3 +8,4 @@ import {
     deletePlanet,
   } from "../controllers/palanetController.js";
   
+const router = new Router();
