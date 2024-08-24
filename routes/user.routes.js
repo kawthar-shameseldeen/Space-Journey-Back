@@ -4,7 +4,7 @@ import {
   getUserByUsername,
   createUser,
   registerIot,
-} from "../controllers/userControlller.js";
+} from "../controllers/userController.js";
 const router = new Router();
 router.get("/all", getAllUsers);
 router.get("/:username", getUserByUsername);
