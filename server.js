@@ -31,3 +31,10 @@ wss.on("connection", (ws, req) => {
     });
   });
   
+  const PORT = process.env.SERVER_PORT || 8080;
+  server.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  
+    databaseConnection();
+  });
+  
