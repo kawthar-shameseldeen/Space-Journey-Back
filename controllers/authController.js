@@ -8,3 +8,11 @@ export const createPlanet = async (req, res) => {
       res.status(500).json({ message: "Error creating planet", error });
     }
   };
+  export const getAllPlanets = async (req, res) => {
+    try {
+      const planets = await Planet.find();
+      res.status(200).json(planets);
+    } catch (error) {
+      res.status(500).json({ message: "Error retrieving planets", error });
+    }
+  };
