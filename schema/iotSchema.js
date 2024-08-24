@@ -12,3 +12,4 @@ export const iotSchema = new Schema({
         default: Date.now,
       },
 });
+export default iotSchema;
