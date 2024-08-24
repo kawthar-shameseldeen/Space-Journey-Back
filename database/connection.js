@@ -16,3 +16,4 @@ export const databaseConnection = async()=>{
         console.log("Failed to connect to database");
       }
 }
+export default databaseConnection;
