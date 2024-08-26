@@ -26,5 +26,8 @@ const protect = async (req, res, next) => {
   }
 };
 
+const adminProtect = (req, res, next) => {
+ 
+};
 
 export { protect, adminProtect };
