@@ -1,7 +1,8 @@
 import { Router } from "express";
-import { createTour, getAllPositions, getPosition, displayTour, updateTour, deleteTour } from "../controllers/tourController.js";
+import { createTour, getAllPositions, getPosition, updateTour } from "../controllers/tourController.js";
 
 const router=new Router();
 router.post("/tour",createTour);
 router.get("/tour",getAllPositions);
 router.get('/tour/:id',getPosition);
+router.put("/tour/:id",updateTour);
