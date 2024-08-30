@@ -13,6 +13,11 @@ export const createTour =async(req,res)=>{
     }
 }
 export const getAllPositions=async(req,res)=>{
-    
+    try{
+        
+    }
+    catch(error){
+
+    }
 
 }
