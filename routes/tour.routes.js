@@ -3,3 +3,4 @@ import { createTour, getAllTours, getTourByName, displayTour, updateTour, delete
 
 const router=new Router();
 router.post("/tour",createTour);
+router.get("/tour",getAllTours);
