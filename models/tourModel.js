@@ -7,6 +7,7 @@ const tourSchema = new Schema({
               y: Number,
               z: Number,
             },
+            step: Number,
           
           },
         
