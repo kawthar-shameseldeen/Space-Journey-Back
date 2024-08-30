@@ -8,6 +8,7 @@ export const createTour =async()=>{
 
     }
     catch(error){
+        res.status(500).json({ message: "Error creating tour", error });
     
     }
 }
