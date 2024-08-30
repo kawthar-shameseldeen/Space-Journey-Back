@@ -6,3 +6,5 @@ router.post("/tour",createTour);
 router.get("/tour",getAllPositions);
 router.get('/tour/:id',getPosition);
 router.put("/tour/:id",updateTour);
+
+export default router;
