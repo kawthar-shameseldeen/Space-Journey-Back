@@ -24,5 +24,10 @@ export const getAllPositions=async(req,res)=>{
 };
 
 export const getPosition =async(req,res)=>{
-    
+    try{
+
+    }
+    catch(error){
+        
+    }
 }
