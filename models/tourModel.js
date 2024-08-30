@@ -11,7 +11,7 @@ const tourSchema = new Schema({
             rotation: {
               x: Number,
               y: Number,
-          
+              z: Number,
             },
           },
         
