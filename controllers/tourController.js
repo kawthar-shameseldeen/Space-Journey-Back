@@ -43,6 +43,7 @@ export const updateTour=async(req,res)=>{
         if(!tour){
             return res.status(404).json({message:"Tour not found"});   
         }
+        res.status(200).json(tour);
 
     }
     catch(error){
