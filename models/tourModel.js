@@ -19,7 +19,8 @@ const tourSchema = new Schema({
                 color: String,
                 status: { type: String, enum: ['on', 'off'], default: 'off' },
               },
-            
+              
+        timeStamp:true,
         
 })
 export  const Tour = mongoose.model("Tour", tourSchema)
