@@ -11,7 +11,7 @@ export const createTour =async(req,res)=>{
         res.status(500).json({ message: "Error creating tour", error });
     
     }
-}
+};
 export const getAllPositions=async(req,res)=>{
     try{
         const tour =await Tour.find();
@@ -23,4 +23,4 @@ export const getAllPositions=async(req,res)=>{
 
     }
 
-}
+};
