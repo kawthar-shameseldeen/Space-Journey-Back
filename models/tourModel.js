@@ -5,7 +5,7 @@ const tourSchema = new Schema({
             coordinates: {
               x: Number,
               y: Number,
-           
+              z: Number,
             },
           
           },
