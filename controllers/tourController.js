@@ -41,7 +41,7 @@ export const updateTour=async(req,res)=>{
             new:true,
         });
         if(!tour){
-            
+            return res.status(404).json({message:"Tour not found"});   
         }
 
     }
