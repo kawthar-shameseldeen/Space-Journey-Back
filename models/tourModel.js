@@ -8,7 +8,9 @@ const tourSchema = new Schema({
               z: Number,
             },
             step: Number,
-          
+            rotation: {
+         
+            },
           },
         
 })
