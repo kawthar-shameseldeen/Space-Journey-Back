@@ -17,7 +17,7 @@ const tourSchema = new Schema({
           lightState: {
                 brightness: Number,
                 color: String,
-                
+                status: { type: String, enum: ['on', 'off'], default: 'off' },
               },
             
         
