@@ -51,3 +51,10 @@ export const updateTour=async(req,res)=>{
 
     }
 }
+
+export default{
+    createTour,
+    getAllPositions,
+    getPosition,
+    updateTour
+}
