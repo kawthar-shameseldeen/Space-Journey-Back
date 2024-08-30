@@ -37,7 +37,7 @@ export const getPosition =async(req,res)=>{
 
 export const updateTour=async(req,res)=>{
     try{
-        const tour =await Tour.findByIdAndUpdate(req.param.id,req.body,{
+        const tour =await Tour.findByIdAndUpdate(req.params.id,req.body,{
             new:true,
         });
         if(!tour){
