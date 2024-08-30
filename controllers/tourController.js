@@ -40,6 +40,9 @@ export const updateTour=async(req,res)=>{
         const tour =await Tour.findByIdAndUpdate(req.param.id,req.body,{
             new:true,
         });
+        if(!tour){
+            
+        }
 
     }
     catch(error){
