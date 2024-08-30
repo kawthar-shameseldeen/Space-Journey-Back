@@ -16,7 +16,8 @@ const tourSchema = new Schema({
           },
           lightState: {
                 brightness: Number,
-              
+                color: String,
+                
               },
             
         
