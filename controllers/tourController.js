@@ -36,5 +36,10 @@ export const getPosition =async(req,res)=>{
 }
 
 export const updateTour=async(req,res)=>{
-    
+    try{
+
+    }
+    catch(error){
+        
+    }
 }
