@@ -47,6 +47,7 @@ export const updateTour=async(req,res)=>{
 
     }
     catch(error){
+        res.status(500).json({ message: "Error updating tour", error });
 
     }
 }
