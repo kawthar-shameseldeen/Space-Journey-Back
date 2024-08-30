@@ -25,9 +25,11 @@ export const getAllPositions=async(req,res)=>{
 
 export const getPosition =async(req,res)=>{
     try{
+        const tour =await Tour.findById(req.params.id);
+        res.status(200).json(tour);
 
     }
     catch(error){
-        
+
     }
 }
