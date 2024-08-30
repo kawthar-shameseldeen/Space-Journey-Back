@@ -1,6 +1,6 @@
 import {Tour} from "../models/tourModel.js";
 
-export const createTour =async()=>{
+export const createTour =async(req,res)=>{
     try{
         const tour =new Tour(req.body);
         await tour.save();
@@ -11,4 +11,8 @@ export const createTour =async()=>{
         res.status(500).json({ message: "Error creating tour", error });
     
     }
+}
+export const getAllPositions=async(req,res)=>{
+    
+
 }
