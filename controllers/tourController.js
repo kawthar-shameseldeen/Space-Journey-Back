@@ -22,3 +22,7 @@ export const getAllPositions=async(req,res)=>{
         res.status(500).json({ message: "Error creating tour", error });
     }
 };
+
+export const getPosition =async(req,res)=>{
+    
+}
