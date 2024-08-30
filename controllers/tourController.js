@@ -15,6 +15,7 @@ export const createTour =async(req,res)=>{
 export const getAllPositions=async(req,res)=>{
     try{
         const tour =await Tour.find();
+        res.status(200).json(tour);
         
     }
     catch(error){
