@@ -6,7 +6,9 @@ import { WebSocketServer } from "ws";
 import userRoutes from "./routes/user.routes.js";
 import planetRoutes from "./routes/planet.routes.js";
 import authRouter from "./routes/auth.routes.js";
+import tourRouter from "./routes/tour.routes.js"
 import cors from 'cors';
+
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ app.use(express.json());
 app.use("/api/user", userRoutes);
 app.use("/api", planetRoutes);
 app.use("/api", authRouter);
+app.use('/api',tourRouter);
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
