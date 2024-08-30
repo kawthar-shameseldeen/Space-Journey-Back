@@ -14,6 +14,10 @@ const tourSchema = new Schema({
               z: Number,
             },
           },
+          lightState: {
+               
+              },
+            
         
 })
 export  const Tour = mongoose.model("Tour", tourSchema)
