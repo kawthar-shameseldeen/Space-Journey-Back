@@ -1,4 +1,5 @@
 import { User } from "../models/userModel.js";
+import Tour from "../models/tourModel.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../middlewares/generateToken.js";
 
@@ -6,7 +7,6 @@ export const register = async (req, res) => {
   const { username, email, password, role } = req.body;
 
   try {
-   
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
@@ -14,12 +14,17 @@ export const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    
+
+    const newTour = new Tour();  
+    await newTour.save();
+
+
     const user = new User({
       username,
       email,
       password: hashedPassword,
       role: role || "user",
+      tourId: newTour._id, 
     });
 
     const savedUser = await user.save();
@@ -27,7 +32,7 @@ export const register = async (req, res) => {
    
     const token = generateToken(savedUser);
 
-   
+  
     res.status(201).json({
       token,
       user: {
@@ -35,12 +40,14 @@ export const register = async (req, res) => {
         username: savedUser.username,
         email: savedUser.email,
         role: savedUser.role,
+        tourId: savedUser.tourId,  
       },
     });
   } catch (error) {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 
 
 export const login = async (req, res) => {
