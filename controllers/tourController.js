@@ -1,5 +1,5 @@
 import {Tour} from "../models/tourModel.js";
-
+import {wss} from "../server.js";
 export const createTour =async(req,res)=>{
     try{
         const tour =new Tour(req.body);
@@ -35,26 +35,15 @@ export const getPosition =async(req,res)=>{
     }
 }
 
-export const updateTour=async(req,res)=>{
-    try{
-        const tour =await Tour.findByIdAndUpdate(req.params.id,req.body,{
-            new:true,
-        });
-        if(!tour){
-            return res.status(404).json({message:"Tour not found"});   
-        }
-        res.status(200).json(tour);
 
-    }
-    catch(error){
-        res.status(500).json({ message: "Error updating tour", error });
-
-    }
-}
-
+export const updateTour = async (req, res) => {
+    
+  };
+  
 export default{
     createTour,
     getAllPositions,
     getPosition,
+   
     updateTour
 }
