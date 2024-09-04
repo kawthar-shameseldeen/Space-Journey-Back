@@ -46,7 +46,26 @@ export const updateTour = async (req, res) => {
       
       wss.clients.forEach(client => {
         if (client.readyState === WebSocket.OPEN) {
-          
+          try {
+            client.send(JSON.stringify({
+              action: 'update_light',
+              data: {
+                brightness: tour.lightState.brightness,
+                color: tour.lightState.color,
+                status: tour.lightState.status,
+              }
+            }));
+          } catch (err) {
+            console.error("Error sending WebSocket message:", err);
+          }
+        }
+      });
+  
+      res.status(200).json(tour);
+    } catch (error) {
+        console.error("Error details:", error);
+      res.status(500).json({ message: "Error updating tour", error });
+    }
   };
   
 export default{
