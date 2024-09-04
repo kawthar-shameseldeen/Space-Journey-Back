@@ -33,11 +33,7 @@ const userSchema = new Schema({
     default: [],
     select: false,
   },
-  tourId: {
-    type: Schema.Types.ObjectId,
-    ref: "Tour",  // Reference to the Tour model
-  },
-
+ 
   timeStamp: {
     type: Date,
     default: Date.now,
