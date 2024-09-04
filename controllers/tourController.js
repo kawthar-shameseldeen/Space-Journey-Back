@@ -45,7 +45,8 @@ export const updateTour = async (req, res) => {
   
       
       wss.clients.forEach(client => {
-     
+        if (client.readyState === WebSocket.OPEN) {
+          
   };
   
 export default{
