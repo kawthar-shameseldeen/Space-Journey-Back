@@ -37,7 +37,23 @@ export const getPosition =async(req,res)=>{
 
 
 export const updateTour = async (req, res) => {
-    
+    try {
+      const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+      });
+  
+      if (!tour) {
+        return res.status(404).json({ message: "Tour not found" });
+      }
+  
+      
+      wss.clients.forEach(client => {
+        if (client.readyState === WebSocket.OPEN) {
+          try {
+           
+    } catch (error) {
+       
+    }
   };
   
 export default{
