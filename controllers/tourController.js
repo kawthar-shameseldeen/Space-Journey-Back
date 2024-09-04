@@ -43,7 +43,9 @@ export const updateTour = async (req, res) => {
         return res.status(404).json({ message: "Tour not found" });
       }
   
-    
+      
+      wss.clients.forEach(client => {
+     
   };
   
 export default{
