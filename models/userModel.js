@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { iotSchema } from "../schema/iotSchema.js";
 import bcrypt from "bcrypt";
+import Tour from "../models/tourModel.js";
 const userSchema = new Schema({
   username: {
     type: String,
@@ -31,6 +32,10 @@ const userSchema = new Schema({
     type: [iotSchema],
     default: [],
     select: false,
+  },
+  tourId: {
+    type: Schema.Types.ObjectId,
+    ref: "Tour",  // Reference to the Tour model
   },
 
   timeStamp: {
