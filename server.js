@@ -11,7 +11,7 @@ import cors from "cors";
 import { Tour } from "./models/tourModel.js"; 
 
 dotenv.config();
-
+//
 const app = express();
 const corsOptions = {
     origin: 'http://localhost:3000', 
