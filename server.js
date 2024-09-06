@@ -9,9 +9,9 @@ import authRouter from "./routes/auth.routes.js";
 import tourRouter from "./routes/tour.routes.js";
 import cors from "cors";
 import { Tour } from "./models/tourModel.js"; 
-
+import eventRoutes from "./routes/event.routes.js";
 dotenv.config();
-//
+
 const app = express();
 const corsOptions = {
     origin: 'http://localhost:3000', 
@@ -28,6 +28,7 @@ app.use("/api/user", userRoutes);
 app.use("/api", planetRoutes);
 app.use("/api", authRouter);
 app.use("/api", tourRouter);
+app.use("/api", eventRoutes);
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
