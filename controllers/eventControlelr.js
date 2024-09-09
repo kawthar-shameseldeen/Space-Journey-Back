@@ -1,4 +1,4 @@
-import Event from '../models/eventModel.js';
+import EventSchema from '../schema/eventSchema.js';
 import User from '../models/userModel.js';
 export const getEvents = async (req, res) => {
   try {
@@ -8,8 +8,6 @@ export const getEvents = async (req, res) => {
     res.status(500).json({ message: 'Failed to fetch events', error });
   }
 };
-
-
 
 
 export const addEventToUser = async (req, res) => {
