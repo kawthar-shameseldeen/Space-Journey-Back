@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
-const EventSchema = new mongoose.Schema({
+const eventSchema = new Schema({
   name: { type: String, required: true },
   description: { type: String },
   date: { type: Date, required: true },
@@ -8,5 +8,4 @@ const EventSchema = new mongoose.Schema({
   notificationSent: { type: Boolean, default: false },
 });
 
-
-export default EventSchema;
+export default eventSchema;
