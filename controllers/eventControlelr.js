@@ -10,4 +10,8 @@ export const getEvents = async (req, res) => {
 };
 
 
+export const addEventToUser = async (req, res) => {
+ 
+};
+
 
