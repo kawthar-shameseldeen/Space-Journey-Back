@@ -1,5 +1,5 @@
-import EventSchema from '../schema/eventSchema.js';
-import User from '../models/userModel.js';
+
+import  Event from "../schema/eventSchema.js";
 export const getEvents = async (req, res) => {
   try {
     const events = await Event.find({ date: { $gte: new Date() } });
