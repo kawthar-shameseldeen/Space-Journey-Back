@@ -2,6 +2,7 @@ import mongoose, { Schema } from "mongoose";
 import { iotSchema } from "../schema/iotSchema.js";
 import bcrypt from "bcrypt";
 import Tour from "../models/tourModel.js";
+import { EventSchema } from "../schema/eventSchema.js";
 const userSchema = new Schema({
   username: {
     type: String,
@@ -12,7 +13,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    required: true,
+    required: true, 
   },
   Location: {
     type: String,
@@ -37,7 +38,7 @@ const userSchema = new Schema({
     default: [],
     select: false,
   },
-  events: [eventSchema],
+  events: [EventSchema],
  
   timeStamp: {
     type: Date,
