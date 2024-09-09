@@ -1,4 +1,5 @@
 import { User } from "../models/userModel.js";
+import eventSchema from "../schema/eventSchema.js";
 export const createUser = async (req, res) => {
   try {
     const userData = req.body;
@@ -21,7 +22,7 @@ export const getAllUsers = async (req, res) => {
 export const getUserByUsername = async (req, res) => {
     try {
       const user = await User.findOne({ username: req.params.username }).select(
-        "-password +iot"
+        "-password +iot+event"
       ); 
       if (!user) {
         return res.status(404).json({ message: "User not found" });
@@ -31,6 +32,7 @@ export const getUserByUsername = async (req, res) => {
       res.status(500).json({ message: "Error retrieving user", error });
     }
   };
+
   export const registerIot = async (req, res) => {
     try {
       const { userId, iotData } = req.body;
