@@ -1,4 +1,5 @@
 import Event from '../models/eventModel.js';
+import User from '../models/userModel.js';
 export const getEvents = async (req, res) => {
   try {
     const events = await Event.find({ date: { $gte: new Date() } });
@@ -8,13 +9,5 @@ export const getEvents = async (req, res) => {
   }
 };
 
-export const createEvent = async (req, res) => {
-  const { name, description, date, liveStreamUrl } = req.body;
-  try {
-    const event = new Event({ name, description, date, liveStreamUrl });
-    await event.save();
-    res.status(201).json(event);
-  } catch (error) {
-    res.status(500).json({ message: 'Failed to create event', error });
-  }
-};
+
+
