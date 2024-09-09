@@ -16,7 +16,24 @@ export const addEventToUser = async (req, res) => {
   const { userId, name, description, date, liveStreamUrl } = req.body;
 
   try {
-  
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const newEvent = {
+      name,
+      description,
+      date,
+      liveStreamUrl,
+      NotificationSent: false,
+    };
+
+    user.events.push(newEvent);
+    await user.save();
+
+    res.status(200).json({ message: 'Event added successfully', event: newEvent });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
