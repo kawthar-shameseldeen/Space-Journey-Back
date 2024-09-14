@@ -39,6 +39,15 @@ const userSchema = new Schema({
     select: false,
   },
   events: [eventSchema],
+
+  notifications: [
+    {
+      message: String,
+      date: { type: Date, default: Date.now },
+      read: { type: Boolean, default: false },
+    },
+  ],
+
  
   timeStamp: {
     type: Date,

@@ -2,9 +2,8 @@ import { User } from "../models/userModel.js";
 import Tour from "../models/tourModel.js";
 import bcrypt from "bcrypt";
 import { generateToken } from "../middlewares/generateToken.js";
-
 export const register = async (req, res) => {
-  const { username, email, password, role } = req.body;
+  const { username, email, password, role, iotDeviceName } = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -14,11 +13,17 @@ export const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
+    const defaultIotDevice = {
+      deviceName: iotDeviceName || "Space-Journey-Device",
+      status: "off",
+    };
+
     const user = new User({
       username,
       email,
       password: hashedPassword,
       role: role || "user",
+      iotDevices: [defaultIotDevice],
     });
 
     const savedUser = await user.save();
@@ -32,6 +37,7 @@ export const register = async (req, res) => {
         username: savedUser.username,
         email: savedUser.email,
         role: savedUser.role,
+        iotDevices: savedUser.iotDevices,
       },
     });
   } catch (error) {
@@ -64,7 +70,6 @@ export const login = async (req, res) => {
         username: user.username,
         email: user.email,
         role: user.role,
-        
       },
     });
   } catch (error) {

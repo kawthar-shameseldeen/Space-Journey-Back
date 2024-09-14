@@ -60,4 +60,21 @@ export const getUserByUsername = async (req, res) => {
         .json({ message: "Error registering IoT device", error: error.message });
     }
   };
+ 
+  export const getUserNotifications = async (req, res) => {
+    const { id } = req.params;
+    console.log("Received ID:", id); 
+  
+    try {
+      const user = await User.findById(id);
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      res.status(200).json({ notifications: user.notifications });
+    } catch (error) {
+      res.status(500).json({ message: 'Failed to fetch notifications', error });
+    }
+  };
   
