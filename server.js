@@ -10,18 +10,18 @@ import tourRouter from "./routes/tour.routes.js";
 import cors from "cors";
 import { Tour } from "./models/tourModel.js"; 
 import eventRoutes from "./routes/event.routes.js";
+
 dotenv.config();
 
 const app = express();
 const corsOptions = {
-    origin: 'http://localhost:3000', 
-    methods: ['GET', 'POST'],
-    credentials: true,
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  };
+  origin: 'http://localhost:3000', 
+  methods: ['GET', 'POST'],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
   
-  app.use(cors(corsOptions));
-  
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use("/api", userRoutes);
@@ -30,23 +30,47 @@ app.use("/api", authRouter);
 app.use("/api", tourRouter);
 app.use("/api", eventRoutes);
 
+
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
 
-
 const clients = [];
+
+
+let simulatedDeviceData = {
+  deviceName: "ESP8266",
+  pinStatus: {
+    D0: "connected",
+    D1: "connected",
+    D2: "connected",
+    D3: "connected",
+    D4: "connected",
+  }
+};
+
+function sendSimulatedData() {
+  clients.forEach((client) => {
+    if (client.readyState === wss.OPEN) {
+      client.send(JSON.stringify(simulatedDeviceData));
+    }
+  });
+}
+
+
+setInterval(sendSimulatedData, 5000); 
+
 
 wss.on('connection', async (ws) => {
   console.log("New WebSocket connection established");
 
   clients.push(ws);
 
-
   ws.on('message', async (message) => {
     try {
       const parsedMessage = JSON.parse(message);
       console.log("Received message from client:", parsedMessage);
 
+    
       if (parsedMessage.userId) {
         const user = await User.findById(parsedMessage.userId).select("iotDevices");
         if (!user) {
@@ -55,7 +79,6 @@ wss.on('connection', async (ws) => {
           return;
         }
 
-    
         const iotStatuses = user.iotDevices.map(device => ({
           deviceName: device.deviceName,
           status: device.status,
@@ -65,8 +88,6 @@ wss.on('connection', async (ws) => {
 
       if (parsedMessage.planetName) {
         console.log(`Planet hovered: ${parsedMessage.planetName}`);
-
-   
         clients.forEach((client) => {
           if (client.readyState === ws.OPEN) {
             console.log(`Sending Planet hovered: ${parsedMessage.planetName}`);
@@ -81,7 +102,6 @@ wss.on('connection', async (ws) => {
 
   ws.on('close', () => {
     console.log("WebSocket connection closed");
-
     const index = clients.indexOf(ws);
     if (index !== -1) {
       clients.splice(index, 1);
@@ -89,6 +109,11 @@ wss.on('connection', async (ws) => {
   });
 });
 
+app.get('/api/device/status', (req, res) => {
+  res.json(simulatedDeviceData);
+});
+
+// Start the server
 const PORT = process.env.SERVER_PORT;
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
