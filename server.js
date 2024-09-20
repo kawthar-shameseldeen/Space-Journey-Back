@@ -14,14 +14,13 @@ import eventRoutes from "./routes/event.routes.js";
 dotenv.config();
 
 const app = express();
-const corsOptions = {
-  origin: 'http://localhost:3000', 
-  methods: ['GET', 'POST'],
-  credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
-  
-app.use(cors(corsOptions));
+
+app.use(cors({
+  origin: '*', // This allows requests from any origin. Change to a specific origin if needed.
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Specify allowed methods.
+  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers.
+}));
+
 app.use(express.json());
 
 app.use("/api", userRoutes);
@@ -115,7 +114,7 @@ app.get('/api/device/status', (req, res) => {
 
 // Start the server
 const PORT = process.env.SERVER_PORT;
-server.listen(PORT, () => {
+server.listen(80, () => {
   console.log(`Server running on port ${PORT}`);
   databaseConnection();
 });
