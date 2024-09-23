@@ -10,7 +10,7 @@ import tourRouter from "./routes/tour.routes.js";
 import cors from "cors";
 import { Tour } from "./models/tourModel.js"; 
 import eventRoutes from "./routes/event.routes.js";
-
+import { test } from './app.test.js';
 dotenv.config();
 
 const app = express();

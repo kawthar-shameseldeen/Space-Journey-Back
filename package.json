@@ -1,12 +1,25 @@
 {
   "name": "space-journey-back",
   "version": "1.0.0",
-  "description": "initializing backend\r testing",
+  "description": "initializing backend testing",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "nodemon server.js"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[tj]sx?$": [
+        "esbuild-jest",
+        {
+          "sourcemap": true,
+          "loaders": {
+            ".test.js": "jsx"
+          }
+        }
+      ]
+    }
   },
   "keywords": [],
   "author": "",
@@ -28,5 +41,12 @@
     "nodemon": "^3.1.4",
     "serialport": "^12.0.0",
     "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.25.4",
+    "babel-jest": "^29.7.0",
+    "esbuild-jest": "^0.5.0",
+    "jest": "^29.7.0",
+    "supertest": "^7.0.0"
   }
 }
